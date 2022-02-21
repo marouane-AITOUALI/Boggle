@@ -13,15 +13,17 @@ public class PanneauControle extends VBox implements Observateur {
     private Boggle boggle;
 
     public PanneauControle(Boggle b){
-        super(20);
+        super(5);
         boggle = b;
         valider = new Button("Valider");
         effacer = new Button("Effacer");
         quitter = new Button("Quitter");
+        boggle.ajouterObservateur(this);
         this.getChildren().addAll(valider,effacer,quitter);
         this.setAlignment(Pos.CENTER_RIGHT);
+        valider.setOnAction(e -> boggle.valider());
+        effacer.setOnAction(new EcouteurEffacer(boggle));
         quitter.setOnAction(e -> Platform.exit());
-        effacer.setOnAction(new EcouteurEffacer());
     }
 
     @Override
