@@ -118,10 +118,17 @@ public class Boggle  {
         }
     }
 
+    /**
+     * Ajout d'observateur à Boggle
+     * @param o Observateur
+     */
     public void ajouterObservateur(Observateur o){
         this.obs.add(o);
     }
 
+    /**
+     * Notifier l'observateur des Vues pour reagir
+     */
     public void notifierObservateurs(){
         for (Observateur o: this.obs){
             o.reagir();
