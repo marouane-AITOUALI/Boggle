@@ -1,9 +1,13 @@
 package boggle.model;
 
+import view.VueInfos;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Boggle  {
 
+    private ArrayList<Observateur> obs = new ArrayList<>();
     private static char[] voyelles = {'A', 'E', 'I', 'O', 'U', 'Y'};
     private static char[] consonnes = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z'};
     private char[][] lettres;
@@ -11,12 +15,12 @@ public class Boggle  {
     private int score = 0;
     private int ligneChoisie, colonneChoisie ;  // dernière case choisie
 
-
     /**
      * Des voyelles sur les lignes impaires ; des consonnes sur les lignes paires
      * @param taille
      */
     public Boggle(int taille) {
+        this.obs = new ArrayList<>();
         this.lettres = new char[taille][taille];
         Random gen = new Random();
         for (int lig = 0; lig < taille; lig++)
@@ -87,6 +91,7 @@ public class Boggle  {
         else
             this.score -= 1 ;
         this.mot = new StringBuilder("");
+        this.notifierObservateurs();
     }
 
     /**
@@ -112,6 +117,17 @@ public class Boggle  {
             this.colonneChoisie = col;
         }
     }
+
+    public void ajouterObservateur(Observateur o){
+        this.obs.add(o);
+    }
+
+    public void notifierObservateurs(){
+        for (Observateur o: this.obs){
+            o.reagir();
+        }
+    }
+
 
 
 }
