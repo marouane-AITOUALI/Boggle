@@ -27,6 +27,11 @@ public class VueLettres extends GridPane implements Observateur {
         for (int i = 0; i < b.getTaille();i++){
             for (int j = 0; j < b.getTaille();j++){
                 lettres[i][j] = new Button(Character.toString(boggle.getLettre(i,j)));
+                lettres[i][j].setStyle("-fx-font: 16 arial;" +
+                        " -fx-background-color: #00FFFF;" +
+                        " -fx-font-color: wight");
+                lettres[i][j].setMaxHeight(20);
+                lettres[i][j].setMinWidth(15);
                 this.add(lettres[i][j],j,i);
                 lettres[i][j].setOnAction(new EcouteurLettre(boggle,i,j));
             }
