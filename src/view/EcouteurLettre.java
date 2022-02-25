@@ -3,7 +3,6 @@ package view;
 import boggle.model.Boggle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.layout.TilePane;
 
 public class EcouteurLettre implements EventHandler<ActionEvent> {
     private Boggle boggle;

@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Boggle boggle = new Boggle(4);
+        Boggle boggle = new Boggle(8);
         stage.setTitle("Boggle");
         BorderPane root = new BorderPane();
         VueLettres lettres = new VueLettres(boggle);
