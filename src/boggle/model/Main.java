@@ -2,16 +2,16 @@ package boggle.model;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import view.EcouteurLettre;
 import view.PanneauControle;
 import view.VueInfos;
 import view.VueLettres;
+import view.VueMotsTrouvés;
 
 public class Main extends Application {
 
@@ -28,7 +28,11 @@ public class Main extends Application {
         root.setCenter(lettres);
         VueInfos infos = new VueInfos(boggle);
         root.setBottom(infos);
-        root.setRight(new PanneauControle(boggle));
+        PanneauControle p = new PanneauControle(boggle);
+        root.setRight(p);
+
+        VueMotsTrouvés mots = new VueMotsTrouvés(boggle);
+        root.setLeft(mots);
 
         // Ajout de Menu
         Menu file = new Menu("_File");
@@ -40,19 +44,20 @@ public class Main extends Application {
 
         // Ecouteur Menu
         exitItem.setOnAction(e -> Platform.exit());
-        item1.setOnAction(e -> {
+        item1.setOnAction(e1 -> {
             Stage window = new Stage();
-            window.setTitle("Nouvelle Partie en cours");
+            window.setTitle("Nouvelle Partie");
             VBox panneau = new VBox();
-            Label label = new Label("Entrer la taille du Boggle: ");
-            TextField text = new TextField("");
-            Button b1 = new Button("Valider");
-            b1.setOnAction(e1 -> {
-                int tailleBoggle = Integer.parseInt(text.getText());
-                stage.setScene(new Scene());
+            TextField text = new TextField();
+            Label label = new Label("Entrer la taille du jeu Boggle");
+            Button b = new Button("Valider");
+            panneau.getChildren().addAll(label, text,b);
+            b.setOnAction(e2 ->{
+                int taille = Integer.parseInt(text.getText());
+                Boggle newBoggle = new Boggle(taille);
+                window.close();
             });
-            panneau.getChildren().addAll(label,text,b1);
-            window.setScene(new Scene(panneau, 250, 100));
+            window.setScene(new Scene(panneau,250,100));
             window.show();
         });
 

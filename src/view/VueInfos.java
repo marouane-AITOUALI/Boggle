@@ -20,7 +20,9 @@ public class VueInfos extends TilePane implements Observateur {
         this.getChildren().addAll(labelMot,labelScore);
         this.setAlignment(Pos.BOTTOM_CENTER);
         this.boggle.ajouterObservateur(this);
+
     }
+
 
     public void re(){
         labelMot.setText("Le mot choisi: "+boggle.getMotChoisi());

@@ -36,6 +36,7 @@ public class Boggle  {
         this.colonneChoisie = -1 ;
     }
 
+
     /**
      * @return taille du jeu (carré)
      */

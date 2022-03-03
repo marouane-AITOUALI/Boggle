@@ -22,14 +22,14 @@ public class VueLettres extends GridPane implements Observateur {
         this.setAlignment(Pos.CENTER);
         this.setHgap(10);this.setVgap(10);
         this.setPrefSize(40,40);
-        //this.setStyle("-fx-background-color: #000");
+        this.setStyle("-fx-background-color: #000");
         boggle = b;
         lettres = new Button[boggle.getTaille()][boggle.getTaille()];
         for (int i = 0; i < b.getTaille();i++){
             for (int j = 0; j < b.getTaille();j++){
                 lettres[i][j] = new Button(Character.toString(boggle.getLettre(i,j)));
                 lettres[i][j].setStyle("-fx-font: 16 arial;" +
-                        " -fx-background-color: #45F9A3");
+                        " -fx-background-color: #FFF");
                 Button bouton = lettres[i][j];
                 bouton.setPrefWidth(this.getPrefWidth());
                 bouton.setPrefHeight(this.getPrefHeight());
