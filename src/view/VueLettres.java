@@ -21,19 +21,22 @@ public class VueLettres extends GridPane implements Observateur {
         this.setPadding(new Insets(3));
         this.setAlignment(Pos.CENTER);
         this.setHgap(10);this.setVgap(10);
-        this.setPrefWidth(30);
+        this.setPrefSize(40,40);
+        //this.setStyle("-fx-background-color: #000");
         boggle = b;
-        lettres = new Button[b.getTaille()][b.getTaille()];
+        lettres = new Button[boggle.getTaille()][boggle.getTaille()];
         for (int i = 0; i < b.getTaille();i++){
             for (int j = 0; j < b.getTaille();j++){
                 lettres[i][j] = new Button(Character.toString(boggle.getLettre(i,j)));
                 lettres[i][j].setStyle("-fx-font: 16 arial;" +
-                        " -fx-background-color: #00FFFF;" +
-                        " -fx-font-color: wight");
-                lettres[i][j].setMaxHeight(20);
-                lettres[i][j].setMinWidth(15);
-                this.add(lettres[i][j],j,i);
-                lettres[i][j].setOnAction(new EcouteurLettre(boggle,i,j));
+                        " -fx-background-color: #45F9A3");
+                Button bouton = lettres[i][j];
+                bouton.setPrefWidth(this.getPrefWidth());
+                bouton.setPrefHeight(this.getPrefHeight());
+                bouton.setMaxHeight(20);
+                bouton.setMinWidth(15);
+                this.add(bouton,j,i);
+                bouton.setOnAction(new EcouteurLettre(boggle,i,j));
             }
         }
         //this.boggle.ajouterObservateur(this);

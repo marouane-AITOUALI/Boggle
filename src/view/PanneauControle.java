@@ -22,7 +22,10 @@ public class PanneauControle extends VBox implements Observateur {
         this.getChildren().addAll(valider,effacer,quitter);
         this.setAlignment(Pos.CENTER_RIGHT);
         valider.setOnAction(e -> boggle.valider());
-        effacer.setOnAction(new EcouteurEffacer(boggle));
+        effacer.setOnAction(e -> {
+            boggle.effacer();
+            boggle.notifierObservateurs();
+        });
         quitter.setOnAction(e -> Platform.exit());
     }
 

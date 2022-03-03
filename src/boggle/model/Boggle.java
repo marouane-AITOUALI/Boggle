@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Boggle  {
 
-    private ArrayList<Observateur> obs = new ArrayList<>();
+    private ArrayList<Observateur> obs;
     private static char[] voyelles = {'A', 'E', 'I', 'O', 'U', 'Y'};
     private static char[] consonnes = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z'};
     private char[][] lettres;
